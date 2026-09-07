@@ -1,0 +1,17 @@
+scenedetect==0.7.1
+opencv-python-headless
+streamlit==1.63.0
+plotly==7.0.0
+numpy
+ultralytics
+anthropic==0.69.0
+
+# Optional: only needed for the Script Generation + AI Reviewer tab
+# (src/script_reviewer.py) in app.py. The rest of the pipeline runs
+# fine without it.
+anthropic==0.69.0
+
+# System dependency (not pip-installable): ffmpeg + ffprobe must be on
+# PATH. Used by src/audio_utils.py to extract audio for brand_safety.py
+# and dead_air_flag.py. On Debian/Ubuntu: `apt-get install ffmpeg`.
+# On macOS: `brew install ffmpeg`.
