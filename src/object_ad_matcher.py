@@ -18,6 +18,7 @@ Design notes:
   - COCO's 80 classes are a limited vocabulary. The mapping below only
     covers classes with a reasonably confident ad-category mapping;
     everything else is left unmapped rather than force-fit.
+  - rightnow completely class based need to integrate reasoning 
 """
 
 from collections import Counter
