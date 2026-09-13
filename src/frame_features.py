@@ -1,17 +1,3 @@
-"""
-frame_features.py
-
-Low-level, per-frame computer-vision signals shared by several higher-level
-modules (quality.py, pacing.py, mood.py, object_detection.py).
-
-Everything in this file is a classic, well-understood CV metric (Laplacian
-sharpness, histogram-based exposure, frame-differencing motion, optical-flow
-jitter). None of it is a learned/trained model and none of it predicts
-audience behavior -- it describes measurable properties of the pixels
-themselves. Keeping these primitives in one place means every downstream
-"score" module is built on the same, auditable ground truth.
-"""
-
 from dataclasses import dataclass
 from typing import List, Tuple
 
