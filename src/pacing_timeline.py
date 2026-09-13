@@ -1,27 +1,3 @@
-"""
-pacing_timeline.py
-
-Content Energy / Pacing Timeline.
-
-Combines two grounded signals into a per-window "energy" score across
-the video:
-  1. Cut density: how many scene cuts occur per rolling time window.
-     Busy cutting = fast pacing (action, montage); sparse cutting =
-     slow pacing (dialogue, exposition).
-  2. Motion magnitude: average optical-flow magnitude per sampled
-     frame. High on-screen motion = high energy; static/talking-head
-     shots = low energy.
-
-Both signals are classic, well-understood video-analysis proxies with
-no learned/predictive component -- this is a descriptive timeline of
-the content's own pacing, not a claim about how viewers will react to
-it. That distinction matters: it can legitimately inform ad-placement
-and QC decisions (e.g. "don't cut into an ad in the middle of a
-high-energy sequence"), and it can be offered as a candidate signal
-for future calibration against real retention data -- but it should
-not itself be described as engagement prediction.
-"""
-
 from dataclasses import dataclass
 from typing import List, Tuple
 
