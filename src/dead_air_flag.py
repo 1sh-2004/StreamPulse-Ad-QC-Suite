@@ -1,28 +1,3 @@
-"""
-dead_air_flag.py
-
-Dead-Air / Low-Engagement Flag.
-
-Broadcast QC practice flags "dead air" as audio silence beyond a
-tolerance window (see e.g. FCC EAS/loudness-monitoring guidance and
-standard broadcast automation "silence sensor" alarms, typically
-10-30s thresholds). We extend that industry baseline slightly: a
-silent window that *also* has low visual motion/cut activity is a
-much stronger low-engagement signal than silence alone (silence
-during a fast-cutting visual montage is often intentional -- a beat
-drop, a dramatic pause -- while silence during a visually static shot
-usually means genuinely "nothing is happening").
-
-This reuses:
-  - production_quality.detect_silence_dropouts for the audio side
-  - pacing_timeline's motion/cut-density signals for the visual side
-
-and simply correlates the two in time. No new detection logic is
-introduced here -- this module is a combinator over existing signals,
-consistent with how script_reviewer.py combines other modules'
-outputs into one report.
-"""
-
 from dataclasses import dataclass, field
 from typing import List, Tuple
 
