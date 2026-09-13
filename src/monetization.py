@@ -1,27 +1,3 @@
-"""
-monetization.py
-
-Converts raw scene-cut timestamps (from scene_detector.py) into a
-ranked list of ad-break windows.
-
-Design goals / rules encoded here:
-  1. Ad-fatigue avoidance: reject any cut that is too close to the
-     previous accepted cut (default: 3 seconds). Rapid cuts usually
-     mean fast-paced action, not a natural narrative break -- inserting
-     an ad there feels jarring.
-  2. Edge avoidance: don't place ad breaks too close to the very start
-     or end of the video (viewers dropped mid-intro/outro churn hard).
-  3. Minimum spacing between ad breaks: even after filtering cuts, we
-     don't want ad windows bunched together -- enforce a minimum gap
-     between *accepted ad windows* (default: configurable, e.g. 60s),
-     which approximates "don't show two ad breaks 10 seconds apart."
-  4. Scoring: not all remaining cuts are equally good. We score each
-     candidate using how "isolated" it is -- i.e. how far it sits from
-     its neighboring cuts. A cut that sits in a long gap between other
-     cuts is more likely to be a genuine scene/act break than one that's
-     just one of many cuts in a busy sequence.
-"""
-
 from dataclasses import dataclass
 from typing import List
 from src.scene_detector import SceneCut
