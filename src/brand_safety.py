@@ -1,30 +1,3 @@
-"""
-brand_safety.py
-
-Brand Safety Flag (YOLOv8 + audio).
-
-Two independent, grounded signals, combined into a per-scene flag a
-human reviewer can act on. Deliberately conservative: this is a
-"needs review" signal, not an automated block/allow decision -- brand
-safety calls carry real commercial risk and should stay human-in-the-loop.
-
-  1. Visual: reuse the same YOLOv8 detector as object_ad_matcher.py to
-     flag COCO object classes that commonly co-occur with brand-unsafe
-     content in advertising contexts (weapons-adjacent objects,
-     alcohol containers, etc.). COCO's vocabulary is narrow and has no
-     "weapon" or "violence" class, so this catches only what's in that
-     80-class vocabulary -- it is a coarse pre-filter, not a
-     comprehensive brand-safety classifier.
-  2. Audio: reuse production_quality.py's audio primitives (clipping
-     ratio, RMS loudness) to flag scenes with an abnormal loudness
-     spike relative to the video's own baseline -- a cheap proxy for
-     "something sonically aggressive happened here" (shouting,
-     gunfire-like impacts, alarms), worth a human's ears.
-
-Both signals key off scene timestamps so results line up with the
-other per-scene modules (production_quality, pacing_timeline).
-"""
-
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
