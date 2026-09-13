@@ -1,24 +1,3 @@
-"""
-audio_utils.py
-
-ffmpeg-based audio extraction. Responsible for exactly one thing:
-given a video file, return its audio track as a mono numpy array of
-float samples in [-1, 1], plus the sample rate -- the exact shape
-`production_quality.py`'s audio functions, `brand_safety.py`'s
-`flag_audio_spikes`, and `dead_air_flag.py`'s `build_dead_air_flags`
-all expect.
-
-Extraction happens once in app.py and the resulting (samples, rate)
-pair is injected into every audio-dependent module, matching the
-"inject the expensive I/O" pattern used elsewhere in this pipeline
-(pacing_timeline's motion_series, script_reviewer's frame_sampler).
-
-Requires ffmpeg + ffprobe on PATH (not pip-installable -- see
-requirements.txt). No Python audio-decoding dependency (audioread,
-pydub, etc.) is needed: we shell out to ffmpeg and read its raw PCM
-output directly.
-"""
-
 import json
 import shutil
 import subprocess
