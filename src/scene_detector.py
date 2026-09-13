@@ -1,15 +1,3 @@
-"""
-scene_detector.py
-
-Thin wrapper around PySceneDetect. Responsible for exactly one thing:
-given a video file, return the list of timestamps (in seconds) where
-a scene change / content break occurs.
-
-This intentionally does NOT contain any monetization logic — that
-lives in monetization.py. Keeping detection and business logic
-separate makes both easier to reason about and test independently.
-"""
-
 from dataclasses import dataclass
 from typing import List
 
